@@ -1,0 +1,34 @@
+import java.util.*; // Importing the Java utility package for using Arrays class
+
+// Defining a class named 'second'
+class second {
+
+    // Method to reverse an array
+    public static void getReverse(int array[]) {
+        int start = 0; // Pointer to the beginning of the array
+        int end = array.length - 1; // Pointer to the end of the array
+
+        // Loop to swap elements from the start and end until they meet in the middle
+        while (start < end) {
+            int temp = array[start]; // Store the start element in a temporary variable
+            array[start] = array[end]; // Assign the end element to the start position
+            array[end] = temp; // Assign the temporary value to the end position
+            start++; // Move the start pointer forward
+            end--; // Move the end pointer backward
+        }
+    }
+
+    // Main method to execute the program
+    public static void main(String args[]) {
+        int[] array = {1, 2, 3, 4, 5, 6}; // Define an array of numbers
+
+        // Print the original array
+        System.out.println("Original array: " + Arrays.toString(array));
+
+        // Call getReverse method to reverse the array
+        getReverse(array);
+
+        // Print the reversed array
+        System.out.println("Reversed array: " + Arrays.toString(array));
+    }
+}
