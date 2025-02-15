@@ -1,0 +1,37 @@
+import java.util.*; // Importing the Java utility package
+
+// Defining a public class named 'first'
+public class first {
+
+    // Method to find the largest and smallest numbers in an array
+    public static int getMax(int number[]) {
+        int largest = Integer.MIN_VALUE; // Initializing 'largest' with the smallest possible integer value
+        int smallest = Integer.MAX_VALUE; // Initializing 'smallest' with the largest possible integer value
+
+        // Loop through the array to find the largest and smallest values
+        for (int i = 0; i < number.length; i++) {
+            if (largest < number[i]) { // Check if the current element is greater than 'largest'
+                largest = number[i]; // Update 'largest'
+            }
+            if (smallest > number[i]) { // Check if the current element is smaller than 'smallest'
+                smallest = number[i]; // Update 'smallest'
+            }
+        }
+        
+        // Print the smallest number
+        System.out.println("Smallest number: " + smallest);
+        
+        return largest; // Return the largest number
+    }
+
+    // Main method to execute the program
+    public static void main(String[] args) {
+        int number[] = {1, 2, 3, 4, 5, 6, 7}; // Define an array of numbers
+        
+        // Call getMax method to find the largest number
+        int largest = getMax(number);
+        
+        // Print the largest number
+        System.out.println("Largest number: " + largest);
+    }
+}
