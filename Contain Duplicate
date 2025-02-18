@@ -1,0 +1,26 @@
+import java.util.*; // Importing the required package for HashSet
+
+public class DuplicateCheck { // Class definition
+    public static boolean containsDuplicate(int numbers[]) { // Method to check for duplicates
+        HashSet<Integer> set = new HashSet<>(); // Create a HashSet to store unique numbers
+        
+        for (int num : numbers) { // Loop through each number in the array
+            if (set.contains(num)) { // If the number is already in the set, it's a duplicate
+                return true; // Return true since a duplicate is found
+            }
+            set.add(num); // Add the number to the set
+        }
+        return false; // No duplicates found, return false
+    }
+
+    public static void main(String args[]) { // Main method
+        int numbers[] = {1, 2, 3, 4, 5, 6, 2}; // Example array with a duplicate (2)
+
+        if (containsDuplicate(numbers)) { // Check if the array contains duplicates
+            System.out.println("Array contains duplicates."); // Print message if duplicates exist
+        } else {
+            System.out.println("Array does not contain duplicates."); // Print message if no duplicates
+        }
+    }
+}
+
