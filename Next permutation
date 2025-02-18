@@ -1,0 +1,47 @@
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int n = nums.length;
+        int pivot = -1;
+
+        // Step 1: Find the pivot (first decreasing element from the right)
+        for (int i = n - 2; i >= 0; i--) {
+            if (nums[i] < nums[i + 1]) {
+                pivot = i;
+                break;
+            }
+        }
+
+        // Step 2: If no pivot found, reverse the array (it's the last permutation)
+        if (pivot == -1) {
+            reverse(nums, 0, n - 1);
+            return;
+        }
+
+        // Step 3: Find the smallest element greater than nums[pivot] from the right
+        for (int i = n - 1; i > pivot; i--) {
+            if (nums[i] > nums[pivot]) {
+                swap(nums, i, pivot);
+                break;
+            }
+        }
+
+        // Step 4: Reverse the suffix (elements after pivot) to get the next permutation
+        reverse(nums, pivot + 1, n - 1);
+    }
+
+    // Helper function to swap two elements
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    // Helper function to reverse an array from start to end
+    private void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            swap(nums, start, end);
+            start++;
+            end--;
+        }
+    }
+}
