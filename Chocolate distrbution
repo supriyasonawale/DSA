@@ -1,0 +1,37 @@
+import java.util.Arrays;
+
+public class ChocolateDistribution {
+    public static int findMinDifference(int chocolates[], int n, int m) {
+        if (m == 0 || n == 0) { // If no students or no packets, return 0
+            return 0;
+        }
+        
+        if (n < m) { // If there are fewer packets than students, distribution is impossible
+            return -1;
+        }
+
+        Arrays.sort(chocolates); // Sort the array to bring similar values together
+
+        int minDiff = Integer.MAX_VALUE;
+
+        for (int i = 0; i + m - 1 < n; i++) {
+            int diff = chocolates[i + m - 1] - chocolates[i]; // Difference between max & min in the selected window
+            minDiff = Math.min(minDiff, diff); // Update the minimum difference
+        }
+
+        return minDiff;
+    }
+
+    public static void main(String args[]) {
+        int chocolates[] = {7, 3, 2, 4, 9, 12, 56}; // Chocolate packets
+        int students = 3; // Number of students
+
+        int result = findMinDifference(chocolates, chocolates.length, students);
+        
+        if (result == -1) {
+            System.out.println("Distribution not possible");
+        } else {
+            System.out.println("Minimum Difference = " + result);
+        }
+    }
+}
