@@ -1,0 +1,21 @@
+public class CellStock {
+    public static int buyAndSellStock(int[] prices) {
+        int minPrice = Integer.MAX_VALUE; // Track the minimum price seen so far
+        int maxProfit = 0; // Track the maximum profit possible
+
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price; // Update minimum price
+            } else {
+                int profit = price - minPrice; // Calculate profit if selling today
+                maxProfit = Math.max(maxProfit, profit); // Update max profit if greater
+            }
+        }
+        return maxProfit; // Return maximum profit found
+    }
+
+    public static void main(String[] args) {
+        int[] prices = {7, 1, 5, 3, 6, 4}; // Example input
+        System.out.println("Maximum Profit: " + buyAndSellStock(prices)); // Output: 5
+    }
+}
