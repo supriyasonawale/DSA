@@ -1,0 +1,44 @@
+public class RotatedSortedArray {
+    public static int searchInSorted(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2; // Finding middle index
+
+            if (arr[mid] == target) {
+                return mid; // Found the target, return its index
+            }
+
+            // Check if the left half is sorted
+            if (arr[left] <= arr[mid]) {
+                // Check if the target lies in this sorted half
+                if (arr[left] <= target && target <= arr[mid]) {
+                    right = mid - 1; // Search left half
+                } else {
+                    left = mid + 1; // Search right half
+                }
+            }
+            // Otherwise, the right half must be sorted
+            else {
+                // Check if the target lies in this sorted half
+                if (arr[mid] <= target && target <= arr[right]) {
+                    left = mid + 1; // Search right half
+                } else {
+                    right = mid - 1; // Search left half
+                }
+            }
+        }
+
+        return -1; // Target not found
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {6, 7, 0, 1, 2, 3, 4, 5}; // Rotated sorted array
+        int target = 0;
+        
+        int index = searchInSorted(arr, target);
+        System.out.println("Index of target: " + index); // Expected Output: 2
+    }
+}
+
